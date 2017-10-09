@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  StyleSheet,
   View,
   Text,
 } from 'react-native';
-import { getWidth } from '../Utils';
 import Title from '../Title';
+import stylesheet from './styles';
 
+const styles = stylesheet();
 const Review = props => {
   return (
     <View>
@@ -17,22 +17,5 @@ const Review = props => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: getWidth(),
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-
-  review: {
-    fontFamily: 'RobotoSlab-Regular',
-    fontSize: 14,
-    color: '#4d4d4d',
-    marginTop: 5,
-  }
-});
 
 export default Review

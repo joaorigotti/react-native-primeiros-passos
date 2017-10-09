@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet,
   TextInput,
   Text,
   View,
   TouchableOpacity,
 } from 'react-native';
-import { getWidth } from '../Utils';
 import Title from '../Title';
+import stylesheet from './styles';
 
 class Form extends Component {
   constructor(props) {
@@ -17,6 +16,7 @@ class Form extends Component {
       review: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.styles = stylesheet();
   }
 
   _resetForm() {
@@ -38,10 +38,10 @@ class Form extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={this.styles.container}>
         <Title size={21}>Deixe sua review</Title>
         <TextInput
-          style={styles.input}
+          style={this.styles.input}
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}
           placeholder="nome"
@@ -49,60 +49,18 @@ class Form extends Component {
         />
         <TextInput
           multiline={true}
-          style={styles.inputMultiline}
+          style={this.styles.inputMultiline}
           onChangeText={(review) => this.setState({review})}
           value={this.state.review}
           placeholder="review"
           underlineColorAndroid="transparent"
         />
-        <TouchableOpacity onPress={this.handleSubmit} style={styles.submitContainer}>
-          <Text style={styles.submit}>ENVIAR</Text>
+        <TouchableOpacity onPress={this.handleSubmit} style={this.styles.submitContainer}>
+          <Text style={this.styles.submit}>ENVIAR</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
-
-const input = {
-  height: 40,
-  borderLeftWidth: 2,
-  borderLeftColor: '#b3b3b3',
-  borderBottomWidth: 1,
-  borderBottomColor: '#e6e6e6',
-  fontFamily: 'RobotoSlab-Regular',
-  fontSize: 12,
-  paddingLeft: 5,
-  marginTop: 10,
-};
-
-const styles = StyleSheet.create({
-  container: {
-    width: getWidth(),
-    paddingLeft: 20,
-    paddingRight: 20,
-    marginTop: 40,
-    marginBottom: 40,
-  },
-
-  input,
-
-  inputMultiline: Object.assign({}, input, { 
-    marginTop: 0,
-    height: 120,
-  }),
-
-  submitContainer: {
-    width: 80,
-    alignSelf: 'flex-end'
-  },
-
-  submit: {
-    fontFamily: 'RobotoSlab-Regular',
-    fontSize: 18,
-    color: '#4d4d4d',
-    marginTop: 10,
-    alignSelf: 'flex-end'
-  }
-});
 
 export default Form

@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  StyleSheet,
   View,
   FlatList,
 } from 'react-native';
-import Review from './Review';
-import Form from './Form';
+import Review from '../Review';
+import Form from '../Form';
 import Separator from '../Separator';
 
 const Reviews = props => {

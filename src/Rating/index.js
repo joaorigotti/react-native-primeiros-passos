@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { getWidth } from '../Utils';
 import Title from '../Title';
 import Separator from '../Separator';
 import { increment, decrement } from '../Business';
+import stylesheet from './styles';
 
 class Rating extends Component {
   constructor(props) {
@@ -17,6 +16,7 @@ class Rating extends Component {
     this.state = { rating: props.defaultValue };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
+    this.styles = stylesheet();
   }
 
   increment() {
@@ -30,14 +30,16 @@ class Rating extends Component {
   }
 
   render() {
+    
+
     return (
-      <View style={styles.container}>
+      <View style={this.styles.container}>
         <TouchableOpacity onPress={this.decrement}>
           <Image source={require('../../assets/images/minus.png')} />
         </TouchableOpacity>
 
-        <View style={styles.ratingContainer}>
-          <Text style={styles.rating}>{this.state.rating}</Text>
+        <View style={this.styles.ratingContainer}>
+          <Text style={this.styles.rating}>{this.state.rating}</Text>
           <Separator width={160} color="#8cc63f" />
           <Title color="#808080" size={16}>Rating</Title>
         </View>
@@ -49,26 +51,5 @@ class Rating extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: getWidth(),
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-
-  ratingContainer: {
-    width: getWidth() / 3,
-    alignItems: 'center'
-  },
-
-  rating: {
-    fontFamily: 'RobotoSlab-Regular',
-    fontSize: 56,
-    fontWeight: 'bold',
-    color: '#4d4d4d',
-  },
-});
 
 export default Rating
