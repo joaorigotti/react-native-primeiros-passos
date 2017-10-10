@@ -1,3 +1,4 @@
+import 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
 import stylesheet from './styles';
