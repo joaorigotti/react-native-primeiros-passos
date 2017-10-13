@@ -2,6 +2,14 @@
 
 exports[`<Reviews /> renders correctly 1`] = `
 <View>
+  <Review
+    name="name"
+    text="review"
+  />
+  <Review
+    name="name"
+    text="review"
+  />
   <Form
     action={[Function]}
     productId={1}
